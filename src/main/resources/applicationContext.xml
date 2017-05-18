@@ -1,0 +1,88 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/aop
+	 http://www.springframework.org/schema/aop/spring-aop.xsd
+	 http://www.springframework.org/schema/tx
+	 http://www.springframework.org/schema/tx/spring-tx.xsd
+	 http://www.springframework.org/schema/jdbc
+	 http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+	 http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context.xsd
+	 http://www.springframework.org/schema/mvc
+	 http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+	>
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.lzw.*" />
+
+<!--     <bean id="DataSource" class="com.alibaba.druid.pool.DruidDataSource" >
+	阿里 druid 数据库连接池
+	数据库基本信息配置
+	
+       <property name = "jdbcUrl" value = "jdbc:mysql://localhost:3306/mydata?serverTimezone=GMT" />    
+       <property name = "username" value = "lzw" />    
+       <property name = "password" value = "123456" />    
+       <property name = "driverClassName" value = "com.mysql.jdbc.Driver" />  
+    </bean> -->
+    
+    <bean id="DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/mydata?serverTimezone=GMT&amp;useUnicode=true&amp;characterEncoding=UTF-8</value>
+		</property>
+		<property name="username">
+			<value>lzw</value>
+		</property>
+		<property name="password">
+			<value>123456</value>
+		</property>
+	</bean>
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="typeAliasesPackage" value="com.lzw.mapper" />
+		<property name="dataSource" ref="DataSource"/>
+		<property name="mapperLocations" value="classpath:mapper/*.xml"/>
+		<!-- 
+		<property name="mapperLocations">
+	        <array>
+	            <value>classpath:mapper/*.xml</value>
+	        </array>
+    	</property> 
+    	-->
+		
+		<!-- 配置分页插件 -->
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<property name="properties">
+						<value>
+						helperDialect=mysql
+                        <!-- 
+                        reasonable=true
+                        supportMethodsArguments=true
+                        params=count=countSql
+                        autoRuntimeDialect=true
+                         -->
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+		
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.lzw.mapper"/>
+
+	</bean>
+</beans>
