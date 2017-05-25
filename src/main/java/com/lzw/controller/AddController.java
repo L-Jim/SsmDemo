@@ -27,7 +27,9 @@ import com.lzw.mapper.User;
 import com.lzw.mapper.UserMapper;
 import com.lzw.servers.UserServer;
 import com.test.readXML;
-
+/*
+ * 将xml数据导入数据库
+ */
 @Controller
 @RequestMapping("/add")
 public class AddController {

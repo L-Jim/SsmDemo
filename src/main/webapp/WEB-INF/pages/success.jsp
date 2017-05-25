@@ -26,53 +26,13 @@ $(function(){
 <body>
 	Hello,work 
 	<br>
-	pageinfo: ${page}
-	<br>
-	<%=basePath%>
-	<br>
-	
-	<br>
-	${ pageContext.request.contextPath} 
-	<br>
-	pageinfo_list: ${page.list}
-<br><br><br>
-<table class="gridtable" style="width:90%;text-align: center;">
-	 	<tr>
-	 		<th>ID</th>
-	 		<th>username</th>
-	 		<th>password</th>
-	 		<th>usertype</th>
-	 		<th>realname</th>
-	 		<th>qq</th>
-	 		<th>邮件</th>
-	 		<th>电话</th>
-	 	</tr>
-	<c:forEach items="${page.list}" var="user">
-		<tr>
-	 		<td>${user.id }</td>
-	 		<td>${user.username}</td>
-	 		<td>${user.password}</td>
-	 		<td>${user.usertype}</td>
-	 		<td>${user.realname}</td>
-	 		<td>${user.qq}</td>
-	 		<td>${user.email}</td>
-	 		<td>${user.tel}</td>
-	 	</tr>
-	</c:forEach>
-		
-</table>
+request中names:${requestScope.username}<br/>
 
-                <c:forEach items="${page.navigatepageNums}" var="nav">
-                 <c:if test="${nav==page.pageNum}">
-                        <td style="font-weight: bold;">${nav}</td>
-                    </c:if>
-                    <c:if test="${nav!=page.pageNum}">
-               
-                        <td>
-                            <a href="user/getuser?i=${nav}">${nav}</a>
-                        </td>
-                    </c:if>
-                </c:forEach>
+ <hr/>
+session中names:${sessionScope.username }<br/>
+
+<br><br><br>
+
 
 </body>
 </html>

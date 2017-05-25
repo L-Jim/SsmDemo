@@ -4,7 +4,10 @@ import java.io.File;
 import java.util.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
-
+/*
+ * 读取xml文件元素
+ * 
+ */
 public class readXML {
 
 	public static void main(String[] args) {

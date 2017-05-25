@@ -18,6 +18,9 @@
   北京时间<div id="times"></div>
   电脑时间<div id="localTime"></div>
 	 
+	<a href="Login">Login</a>
+	<br>
+	<br>
 	<a href="city/getcitys">select city</a>
 	<br>
 	<br>

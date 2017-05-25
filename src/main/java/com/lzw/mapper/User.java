@@ -256,4 +256,11 @@ public class User {
     public void setTel(String tel) {
         this.tel = tel;
     }
+
+	@Override
+	public String toString()
+	{
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", usertype=" + usertype
+				+ ", realname=" + realname + ", qq=" + qq + ", email=" + email + ", tel=" + tel + "]";
+	}
 }

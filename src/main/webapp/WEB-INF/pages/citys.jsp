@@ -13,6 +13,12 @@ String contextPath = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath+"/";
 %>
 <html>
+	<!-- easyUI -->
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/themes/icon.css">
+	<script type="text/javascript" src="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/css/style.css"/>
 <script type="text/javascript" src="<%=request.getContextPath()%>/res/js/jquery-3.2.1.js" ></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/res/js/myjs/pageQuery.js" ></script>
@@ -39,28 +45,26 @@ $(function(){
 
 	pageinfo: ${page}
 <br><br><br>
-<form action="getcitys" method="post"
-	name="form1" id="form1">
-	<input type="hidden" name="pageNum" value="1"> 
-<table width="98%" border="1" align="center" cellpadding="0"
-	cellspacing="0" bordercolorlight="#CCCCCC" bordercolordark="#aaaaaa"
-	bgcolor="#EBEBEB" class="gridtable" >
-	<tr >
-		
-		<td align="right" bgcolor="#EBEBEB" width="10%" nowrap>
-			父节点：<input name="fathernode" type="text"
-						id="fathernode" size="13"
-						value="${city.fathernode}" >
-			</td>
-		<td colspan='1' align="left"><input type="submit"
-			class="button3" id="query" value="查询" title="查询" />
-	</tr>
-</table>
-</form>
-<mvc:form ></mvc:form>
-<table class="gridtable" onClick="clickOnTH();"
-				onMouseOver="overTHColor();" onMouseOut="outTHColor();"
-				style="width:90%;text-align: center;">
+<div class="easyui-panel" title="查询" style="width:90%" align="center" >
+		<div style="padding:10px 60px 20px 60px">
+	    <form name="queryForm" id="queryForm" method="post" action="getcitys">
+	    <input type="hidden" name="pageNum" value="1"> 
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>父节点:</td>
+	    			<td><input class="easyui-textbox" type="text" name="fathernode"/></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submit(1)">查询</a>
+	    	
+	    </div>
+	    </div>
+	</div>
+
+<table class="gridtable"  style="width:90%;text-align: center;"
+				onMouseOver="overTbColor();" onMouseOut="outTbColor();" >
 	 	<tr>
 	 		<th><spring:message code="city.id"/></th>
 	 		<th><spring:message code="city.name"/></th>

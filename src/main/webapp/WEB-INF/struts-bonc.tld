@@ -10,7 +10,7 @@
 
   <tag>
     <name>pageNavigate</name>
-    <tagclass>com.lzw.tool.PageNavigate</tagclass>
+    <tagclass>com.lzw.tld.PageNavigate</tagclass>
     <bodycontent>empty</bodycontent>
     <attribute>
       <name>pageInfo</name>

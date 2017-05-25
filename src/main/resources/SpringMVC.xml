@@ -25,6 +25,8 @@
 		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
 	</context:component-scan>
 	
+	<!-- 不经过controller直接跳转页面，这样会使其他的请求不管用。解决方法是配置<mvc:annotation-driven></mvc:annotation-driven>,便可完美解决。 -->
+	<mvc:view-controller path="/Login" view-name="/Login"/>
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 	
@@ -55,6 +57,13 @@
 				<!-- <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 		            <property name="paramName" value="language" />			
 				</bean> -->
+				<mvc:interceptor>
+				<mvc:mapping path="/**"/>
+				<mvc:exclude-mapping path="/Login"/>
+				<mvc:exclude-mapping path="/login/chack"/>
+				<bean class="com.lzw.interceptors.LoginInterceptor"/>
+
+			</mvc:interceptor>
 			<mvc:interceptor>
 				<mvc:mapping path="/**"/>
 				<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">		 
@@ -63,5 +72,6 @@
 				</bean>
 			</mvc:interceptor>
 		</mvc:interceptors>
+	
 	
 </beans>
