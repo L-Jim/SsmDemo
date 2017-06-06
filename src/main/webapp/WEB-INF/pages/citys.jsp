@@ -13,11 +13,9 @@ String contextPath = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath+"/";
 %>
 <html>
-	<!-- easyUI -->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/themes/icon.css">
-	<script type="text/javascript" src="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/res/js/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/res/bootstrap/css/bootstrap.min.css">  
+	<script src="<%=request.getContextPath()%>/res/bootstrap/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/css/style.css"/>
 <script type="text/javascript" src="<%=request.getContextPath()%>/res/js/jquery-3.2.1.js" ></script>
@@ -63,8 +61,7 @@ $(function(){
 	    </div>
 	</div>
 
-<table class="gridtable"  style="width:90%;text-align: center;"
-				onMouseOver="overTbColor();" onMouseOut="outTbColor();" >
+<table class="table table-striped table-bordered table-hover table-condensed"  style="width:90%;text-align: center;" >
 	 	<tr>
 	 		<th><spring:message code="city.id"/></th>
 	 		<th><spring:message code="city.name"/></th>
